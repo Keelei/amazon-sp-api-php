@@ -124,6 +124,13 @@ trait SellingPartnerApiRequest
             }
 //            var_dump($content);
 //            exit();
+            if ($returnType === 'Clousale\AmazonSellingPartnerAPI\Models\Orders\GetOrderItemsBuyerInfoResponse') {
+                return [
+                    $content,
+                    $response->getStatusCode(),
+                    $response->getHeaders(),
+                ];
+            }
 
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
